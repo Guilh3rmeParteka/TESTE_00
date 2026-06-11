@@ -1,10 +1,14 @@
-let tamanhoAtual = 100;
+const botao =
+document.getElementById("btn-acessibilidade");
 
-const aumentarFonte =
-document.getElementById("fonteMais");
+const painel =
+document.getElementById("painel");
 
-const diminuirFonte =
-document.getElementById("fonteMenos");
+const aumentar =
+document.getElementById("aumentar");
+
+const diminuir =
+document.getElementById("diminuir");
 
 const contraste =
 document.getElementById("contraste");
@@ -12,73 +16,67 @@ document.getElementById("contraste");
 const voz =
 document.getElementById("voz");
 
-aumentarFonte.addEventListener("click", () => {
+const dislexia =
+document.getElementById("dislexia");
 
-    tamanhoAtual += 10;
+let tamanho = 100;
 
-    document.body.style.fontSize =
-    tamanhoAtual + "%";
+botao.addEventListener("click",()=>{
 
-});
-
-diminuirFonte.addEventListener("click", () => {
-
-    tamanhoAtual -= 10;
-
-    document.body.style.fontSize =
-    tamanhoAtual + "%";
+document
+.getElementById("painel-acessibilidade")
+.classList.toggle("ativo");
 
 });
 
-contraste.addEventListener("click", () => {
+aumentar.addEventListener("click",()=>{
 
-    document.body.classList.toggle(
-        "alto-contraste"
-    );
+tamanho += 10;
 
-});
-
-voz.addEventListener("click", () => {
-
-    let texto =
-    document.body.innerText;
-
-    let mensagem =
-    new SpeechSynthesisUtterance(texto);
-
-    mensagem.lang = "pt-BR";
-
-    speechSynthesis.speak(mensagem);
+document.body.style.fontSize =
+tamanho + "%";
 
 });
 
-/* Efeito futurista nos cards */
+diminuir.addEventListener("click",()=>{
 
-const cards =
-document.querySelectorAll(".card");
+if(tamanho > 70){
 
-cards.forEach(card => {
+tamanho -= 10;
 
-    card.addEventListener("mousemove", e => {
+document.body.style.fontSize =
+tamanho + "%";
 
-        const x =
-        e.offsetX;
+}
 
-        const y =
-        e.offsetY;
+});
 
-        card.style.background =
-        `radial-gradient(circle at ${x}px ${y}px,
-        rgba(0,255,136,.25),
-        rgba(255,255,255,.05))`;
+contraste.addEventListener("click",()=>{
 
-    });
+document.body.classList.toggle(
+"alto-contraste"
+);
 
-    card.addEventListener("mouseleave", () => {
+});
 
-        card.style.background =
-        "rgba(255,255,255,.05)";
+dislexia.addEventListener("click",()=>{
 
-    });
+document.body.classList.toggle(
+"fonte-dislexia"
+);
+
+});
+
+voz.addEventListener("click",()=>{
+
+const texto =
+document.body.innerText;
+
+const leitura =
+new SpeechSynthesisUtterance(texto);
+
+leitura.lang = "pt-BR";
+
+speechSynthesis.speak(leitura);
 
 });
