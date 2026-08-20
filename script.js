@@ -1,12 +1,12 @@
-/* =========================================================
+/* =====================================================
    DILEMAS DIGITAIS
    SISTEMA INTERATIVO 3D
-========================================================= */
+===================================================== */
 
 
-/* =========================================================
+/* =====================================================
    SOLUÇÕES
-========================================================= */
+===================================================== */
 
 const solutions = {
 
@@ -100,9 +100,9 @@ const solutions = {
 };
 
 
-/* =========================================================
+/* =====================================================
    SISTEMA DE SOLUÇÕES
-========================================================= */
+===================================================== */
 
 const buttons =
     document.querySelectorAll(".solution-btn");
@@ -123,7 +123,9 @@ buttons.forEach(button => {
 
 
         if (!solution) {
+
             return;
+
         }
 
 
@@ -132,14 +134,25 @@ buttons.forEach(button => {
             <div class="solution-content">
 
                 <div class="mini-label">
+
                     SOLUTION_PROTOCOL // ACTIVE
+
                 </div>
 
-                <h3>${solution.title}</h3>
+
+                <h3>
+
+                    ${solution.title}
+
+                </h3>
+
 
                 <p>
+
                     ${solution.description}
+
                 </p>
+
 
                 <ul>
 
@@ -147,7 +160,8 @@ buttons.forEach(button => {
                         .map(item => `
                             <li>${item}</li>
                         `)
-                        .join("")}
+                        .join("")
+                    }
 
                 </ul>
 
@@ -169,15 +183,12 @@ buttons.forEach(button => {
 });
 
 
-/* =========================================================
+/* =====================================================
    QUIZ
-========================================================= */
+===================================================== */
 
 const quizButtons =
-    document.querySelectorAll(
-        ".quiz-options button"
-    );
-
+    document.querySelectorAll(".quiz-options button");
 
 const quizResult =
     document.getElementById("quiz-result");
@@ -191,24 +202,10 @@ quizButtons.forEach(button => {
             button.dataset.answer;
 
 
-        quizButtons.forEach(btn => {
-
-            btn.style.borderColor =
-                "rgba(112, 128, 180, 0.22)";
-
-            btn.style.transform =
-                "translateX(0)";
-
-        });
-
-
         if (answer === "correct") {
 
-            button.style.borderColor =
-                "#00ffc8";
-
             quizResult.textContent =
-                "✓ CORRETO — Verificar como seus dados serão utilizados é uma atitude importante antes de aceitar.";
+                "✓ Correto! Verificar como seus dados serão utilizados é uma atitude importante antes de aceitar.";
 
             quizResult.className =
                 "correct";
@@ -217,11 +214,8 @@ quizButtons.forEach(button => {
 
         else {
 
-            button.style.borderColor =
-                "#ff4d73";
-
             quizResult.textContent =
-                "✕ RESPOSTA INCORRETA — Procure entender pelo menos os pontos principais antes de aceitar.";
+                "✕ Essa não é a melhor opção. Procure entender pelo menos os pontos principais antes de aceitar.";
 
             quizResult.className =
                 "wrong";
@@ -233,24 +227,138 @@ quizButtons.forEach(button => {
 });
 
 
-/* =========================================================
-   REVEAL AO ENTRAR NA TELA
-========================================================= */
+/* =====================================================
+   EFEITO 3D DOS CARDS
+===================================================== */
 
-const revealElements =
-    document.querySelectorAll(
-        ".card, .principle, .section-title"
-    );
+const tiltCards =
+    document.querySelectorAll(".tilt-card");
 
 
-revealElements.forEach(element => {
+tiltCards.forEach(card => {
 
-    element.classList.add("reveal");
+    card.addEventListener("mousemove", event => {
+
+        const rect =
+            card.getBoundingClientRect();
+
+
+        const x =
+            event.clientX - rect.left;
+
+        const y =
+            event.clientY - rect.top;
+
+
+        const centerX =
+            rect.width / 2;
+
+        const centerY =
+            rect.height / 2;
+
+
+        const rotateX =
+            ((y - centerY) / centerY) * -7;
+
+
+        const rotateY =
+            ((x - centerX) / centerX) * 7;
+
+
+        card.style.transform = `
+
+            perspective(1000px)
+
+            rotateX(${rotateX}deg)
+
+            rotateY(${rotateY}deg)
+
+            translateZ(10px)
+
+        `;
+
+    });
+
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform =
+
+            "perspective(1000px) rotateX(0) rotateY(0) translateZ(0)";
+
+    });
 
 });
 
 
-const revealObserver =
+/* =====================================================
+   PARTÍCULAS
+===================================================== */
+
+const particlesContainer =
+    document.getElementById("particles");
+
+
+function createParticles() {
+
+    if (!particlesContainer) {
+
+        return;
+
+    }
+
+
+    for (let i = 0; i < 45; i++) {
+
+        const particle =
+            document.createElement("div");
+
+
+        particle.className =
+            "particle";
+
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        particle.style.animationDuration =
+            (5 + Math.random() * 10) + "s";
+
+
+        particle.style.animationDelay =
+            Math.random() * 10 + "s";
+
+
+        particle.style.opacity =
+            Math.random();
+
+
+        particlesContainer.appendChild(
+            particle
+        );
+
+    }
+
+}
+
+
+createParticles();
+
+
+/* =====================================================
+   ANIMAÇÃO AO APARECER
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(
+
+        ".section-title, .card, .principle, .solution-display"
+
+    );
+
+
+const observer =
     new IntersectionObserver(
 
         entries => {
@@ -263,7 +371,7 @@ const revealObserver =
                         "visible"
                     );
 
-                    revealObserver.unobserve(
+                    observer.unobserve(
                         entry.target
                     );
 
@@ -274,7 +382,9 @@ const revealObserver =
         },
 
         {
+
             threshold: 0.12
+
         }
 
     );
@@ -282,180 +392,86 @@ const revealObserver =
 
 revealElements.forEach(element => {
 
-    revealObserver.observe(element);
+    element.style.opacity = "0";
+
+    element.style.transform =
+        "translateY(30px)";
+
+
+    element.style.transition =
+        "opacity .7s ease, transform .7s ease";
+
+
+    observer.observe(element);
 
 });
 
 
-/* =========================================================
-   EFEITO 3D NOS CARDS
-========================================================= */
+/* =====================================================
+   ESTILO DINÂMICO DA ANIMAÇÃO
+===================================================== */
 
-const tiltCards =
-    document.querySelectorAll(".tilt-card");
-
-
-const isTouchDevice =
-    window.matchMedia(
-        "(pointer: coarse)"
-    ).matches;
+const revealStyle =
+    document.createElement("style");
 
 
-if (!isTouchDevice) {
+revealStyle.textContent = `
 
-    tiltCards.forEach(card => {
+    .visible {
 
-        card.addEventListener(
-            "mousemove",
-            event => {
+        opacity: 1 !important;
 
-                const rect =
-                    card.getBoundingClientRect();
-
-
-                const x =
-                    event.clientX - rect.left;
-
-
-                const y =
-                    event.clientY - rect.top;
-
-
-                const centerX =
-                    rect.width / 2;
-
-
-                const centerY =
-                    rect.height / 2;
-
-
-                const rotateY =
-                    ((x - centerX) / centerX) * 10;
-
-
-                const rotateX =
-                    ((centerY - y) / centerY) * 10;
-
-
-                card.style.transform = `
-                    perspective(900px)
-                    rotateX(${rotateX}deg)
-                    rotateY(${rotateY}deg)
-                    translateZ(8px)
-                `;
-
-            }
-        );
-
-
-        card.addEventListener(
-            "mouseleave",
-            () => {
-
-                card.style.transform =
-                    "perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0)";
-
-            }
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   CURSOR DIGITAL
-========================================================= */
-
-const cursorGlow =
-    document.querySelector(".cursor-glow");
-
-
-if (!isTouchDevice) {
-
-    document.addEventListener(
-        "mousemove",
-        event => {
-
-            cursorGlow.style.left =
-                `${event.clientX}px`;
-
-            cursorGlow.style.top =
-                `${event.clientY}px`;
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   PARALLAX DO HERO
-========================================================= */
-
-const heroVisual =
-    document.querySelector(".hero-visual");
-
-
-if (!isTouchDevice && heroVisual) {
-
-    document.addEventListener(
-        "mousemove",
-        event => {
-
-            const x =
-                (event.clientX / window.innerWidth - 0.5);
-
-            const y =
-                (event.clientY / window.innerHeight - 0.5);
-
-
-            heroVisual.style.transform = `
-                translate(
-                    ${x * 12}px,
-                    ${y * 12}px
-                )
-            `;
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   HEADER DINÂMICO
-========================================================= */
-
-const header =
-    document.querySelector("header");
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if (window.scrollY > 50) {
-
-            header.style.boxShadow =
-                "0 15px 50px rgba(0,0,0,0.3)";
-
-        }
-
-        else {
-
-            header.style.boxShadow =
-                "none";
-
-        }
+        transform:
+            translateY(0) !important;
 
     }
+
+`;
+
+
+document.head.appendChild(
+    revealStyle
 );
 
 
-/* =========================================================
-   ACTIVE MENU
-========================================================= */
+/* =====================================================
+   PARALLAX DO FUNDO
+===================================================== */
+
+window.addEventListener("scroll", () => {
+
+    const scroll =
+        window.scrollY;
+
+
+    const grid =
+        document.querySelector(
+            ".background-grid"
+        );
+
+
+    if (grid) {
+
+        grid.style.transform = `
+
+            perspective(500px)
+
+            rotateX(60deg)
+
+            translateY(${scroll * 0.08}px)
+
+            scale(2.2)
+
+        `;
+
+    }
+
+});
+
+
+/* =====================================================
+   MENU ATIVO
+===================================================== */
 
 const sections =
     document.querySelectorAll(
@@ -463,199 +479,59 @@ const sections =
     );
 
 
-const menuLinks =
+const navLinks =
     document.querySelectorAll(
         ".menu a"
     );
 
 
-const menuObserver =
-    new IntersectionObserver(
+window.addEventListener("scroll", () => {
 
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    menuLinks.forEach(link => {
-
-                        link.classList.remove(
-                            "active"
-                        );
-
-                    });
+    let current = "";
 
 
-                    const active =
-                        document.querySelector(
-                            `.menu a[href="#${entry.target.id}"]`
-                        );
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop - 150;
 
 
-                    if (active) {
+        if (
+            window.scrollY >= sectionTop
+        ) {
 
-                        active.classList.add(
-                            "active"
-                        );
-
-                    }
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.5
-        }
-
-    );
-
-
-sections.forEach(section => {
-
-    menuObserver.observe(section);
-
-});
-
-
-/* =========================================================
-   EFEITO DE DIGITAÇÃO NO STATUS
-========================================================= */
-
-const statusTexts = [
-
-    "SYSTEM ONLINE",
-
-    "DATA PROTECTED",
-
-    "PROTOCOL ACTIVE",
-
-    "USER CONNECTED"
-
-];
-
-
-const statusElements =
-    document.querySelectorAll(
-        ".status"
-    );
-
-
-let statusIndex = 0;
-
-
-setInterval(() => {
-
-    statusIndex =
-        (statusIndex + 1) %
-        statusTexts.length;
-
-
-    statusElements.forEach(element => {
-
-        const span =
-            element.querySelector("span");
-
-
-        if (span) {
-
-            element.innerHTML = `
-
-                <span></span>
-
-                ${statusTexts[statusIndex]}
-
-            `;
+            current =
+                section.getAttribute("id");
 
         }
 
     });
 
-}, 3500);
 
+    navLinks.forEach(link => {
 
-/* =========================================================
-   EFEITO DE DIGITAÇÃO DO MINI LABEL
-========================================================= */
+        link.style.color =
+            link.getAttribute("href") === `#${current}`
 
-const miniLabels =
-    document.querySelectorAll(
-        ".mini-label"
-    );
+                ? "white"
 
+                : "";
 
-miniLabels.forEach(label => {
-
-    label.addEventListener(
-        "mouseenter",
-        () => {
-
-            label.style.textShadow =
-                "0 0 15px #00e5ff";
-
-        }
-    );
-
-
-    label.addEventListener(
-        "mouseleave",
-        () => {
-
-            label.style.textShadow =
-                "none";
-
-        }
-    );
+    });
 
 });
 
 
-/* =========================================================
-   PROTEÇÃO CONTRA ERROS
-========================================================= */
-
-window.addEventListener(
-    "error",
-    event => {
-
-        console.warn(
-            "Dilemas Digitais:",
-            event.message
-        );
-
-    }
-);
-
-
-/* =========================================================
+/* =====================================================
    CONSOLE
-========================================================= */
+===================================================== */
 
 console.log(
-    "%c DILEMAS DIGITAIS ",
-    `
-        background:#6c63ff;
-        color:white;
-        padding:10px;
-        font-weight:bold;
-        border-radius:5px;
-    `
-);
 
+    "%c DILEMAS DIGITAIS %c SYSTEM ONLINE",
 
-console.log(
-    "Sistema tecnológico carregado."
-);
+    "color:#00f5d4;font-weight:bold;font-size:16px;",
 
+    "color:#725cff;font-weight:bold;"
 
-console.log(
-    "3D Interface: ACTIVE"
-);
-
-
-console.log(
-    "Privacy Protocol: ACTIVE"
 );

@@ -2,56 +2,85 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="Dilemas Digitais - Entenda os termos de uso dos sites e encontre soluções.">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Dilemas Digitais | Tecnologia & Cidadania</title>
+    <meta
+        name="description"
+        content="Dilemas Digitais - Entenda os termos de uso e transforme informação complexa em conhecimento."
+    >
 
+    <title>Dilemas Digitais | Experiência Digital</title>
+
+    <!-- FONTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- CURSOR TECNOLÓGICO -->
-    <div class="cursor-glow"></div>
+    <!-- FUNDO 3D -->
 
-    <!-- FUNDO -->
-    <div class="background-effects">
-        <div class="grid-background"></div>
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
+    <div class="background-grid"></div>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="particles" id="particles"></div>
+
 
     <!-- HEADER -->
+
     <header>
 
         <nav class="navbar">
 
             <a href="#inicio" class="logo">
+
                 <span class="logo-symbol">◈</span>
+
                 Dilemas<span>Digitais</span>
+
             </a>
 
+
             <div class="menu">
+
                 <a href="#inicio">Início</a>
+
                 <a href="#dilemas">Dilemas</a>
+
                 <a href="#solucoes">Soluções</a>
+
+                <a href="#principios">Princípios</a>
+
                 <a href="#quiz">Quiz</a>
+
             </div>
 
-            <div class="status">
+
+            <div class="system-status">
+
                 <span></span>
-                SISTEMA ONLINE
+
+                SYSTEM ONLINE
+
             </div>
 
         </nav>
@@ -59,59 +88,105 @@
     </header>
 
 
+    <!-- MAIN -->
+
     <main>
 
+
         <!-- HERO -->
+
         <section id="inicio" class="hero">
 
             <div class="hero-content">
 
                 <div class="hero-badge">
+
                     <span></span>
+
                     EXPERIÊNCIA DIGITAL 2.0
+
                 </div>
 
-                <span class="tag">TECNOLOGIA • PRIVACIDADE • CIDADANIA</span>
+
+                <span class="tag">
+
+                    TECNOLOGIA • PRIVACIDADE • CIDADANIA
+
+                </span>
+
 
                 <h1>
+
                     Você realmente sabe
+
                     <strong>o que aceita?</strong>
+
                 </h1>
 
+
                 <p>
+
                     Os termos de uso fazem parte da nossa vida digital.
+
                     Mas entender o que estamos aceitando deveria ser tão
+
                     simples quanto clicar em um botão.
+
                 </p>
+
 
                 <div class="hero-buttons">
 
-                    <a href="#dilemas" class="button primary-button">
+                    <a
+                        href="#dilemas"
+                        class="button primary-button"
+                    >
+
                         Explorar dilemas
+
                         <span>→</span>
+
                     </a>
 
-                    <a href="#solucoes" class="button secondary-button">
+
+                    <a
+                        href="#solucoes"
+                        class="button secondary-button"
+                    >
+
                         Ver soluções
+
                     </a>
 
                 </div>
+
 
                 <div class="hero-stats">
 
                     <div>
+
                         <strong>04</strong>
+
                         <span>Dilemas</span>
+
                     </div>
 
+
                     <div>
+
                         <strong>04</strong>
+
                         <span>Soluções</span>
+
                     </div>
 
+
                     <div>
+
                         <strong>01</strong>
+
                         <span>Objetivo</span>
+
                     </div>
 
                 </div>
@@ -119,64 +194,71 @@
             </div>
 
 
-            <!-- PAINEL 3D -->
+            <!-- CARD 3D -->
+
             <div class="hero-visual">
 
-                <div class="hologram-ring ring-one"></div>
-                <div class="hologram-ring ring-two"></div>
+                <div class="hologram">
 
-                <div class="floating-particle particle-one">+</div>
-                <div class="floating-particle particle-two">◇</div>
-                <div class="floating-particle particle-three">01</div>
+                    <div class="hologram-ring ring-1"></div>
 
-                <div class="hero-card-3d">
+                    <div class="hologram-ring ring-2"></div>
 
-                    <div class="card-top">
+                    <div class="hologram-ring ring-3"></div>
 
-                        <span class="system-dot"></span>
 
-                        <span>TERMS_PROTOCOL</span>
+                    <div class="document-card">
 
-                        <span>•••</span>
+                        <div class="document-top">
 
-                    </div>
+                            <span>TERMS_OF_USE</span>
 
-                    <div class="document-icon">
-                        <div class="document-page">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                            <span class="live-dot"></span>
+
                         </div>
-                    </div>
 
-                    <div class="scan-line"></div>
 
-                    <h2>TERMOS DE USO</h2>
+                        <div class="document-icon">
 
-                    <p>
-                        "Li e concordo com os termos..."
-                    </p>
+                            📄
 
-                    <div class="progress">
+                        </div>
 
-                        <span></span>
 
-                    </div>
+                        <h3>
 
-                    <div class="fake-button">
-                        ACEITAR
-                        <span>✓</span>
-                    </div>
+                            Termos de Uso
 
-                    <div class="question">
-                        <span>?</span>
-                        Você leu tudo?
-                    </div>
+                        </h3>
 
-                    <div class="card-footer">
-                        <span>SECURE_CONNECTION</span>
-                        <span>98%</span>
+
+                        <p>
+
+                            "Li e concordo com os termos..."
+
+                        </p>
+
+
+                        <div class="document-line"></div>
+
+                        <div class="document-line short"></div>
+
+                        <div class="document-line"></div>
+
+
+                        <button>
+
+                            ACEITAR
+
+                        </button>
+
+
+                        <small>
+
+                            Você leu tudo?
+
+                        </small>
+
                     </div>
 
                 </div>
@@ -186,53 +268,43 @@
         </section>
 
 
-        <!-- MARQUEE -->
-        <div class="tech-line">
-
-            <div class="tech-line-content">
-
-                <span>PRIVACIDADE</span>
-                <i>◆</i>
-
-                <span>TRANSPARÊNCIA</span>
-                <i>◆</i>
-
-                <span>CONSENTIMENTO</span>
-                <i>◆</i>
-
-                <span>SEGURANÇA</span>
-                <i>◆</i>
-
-                <span>CIDADANIA DIGITAL</span>
-                <i>◆</i>
-
-                <span>PRIVACIDADE</span>
-                <i>◆</i>
-
-                <span>TRANSPARÊNCIA</span>
-
-            </div>
-
-        </div>
-
-
         <!-- DILEMAS -->
+
         <section id="dilemas" class="section">
 
             <div class="section-title">
 
-                <div class="section-number">01 / 04</div>
+                <div class="section-number">
 
-                <span class="tag">OS PROBLEMAS</span>
+                    01 / 04
+
+                </div>
+
+
+                <span class="tag">
+
+                    OS PROBLEMAS
+
+                </span>
+
 
                 <h2>
-                    O lado invisível
-                    <span>dos termos.</span>
+
+                    Principais
+
+                    <span>dilemas digitais</span>
+
                 </h2>
 
+
                 <p>
-                    A tecnologia evolui rapidamente. As regras que determinam
-                    como nossos dados são utilizados também precisam evoluir.
+
+                    A tecnologia trouxe possibilidades incríveis,
+
+                    mas também novos desafios para quem utiliza
+
+                    serviços digitais.
+
                 </p>
 
             </div>
@@ -240,102 +312,214 @@
 
             <div class="cards">
 
+
+                <!-- CARD 01 -->
+
                 <article class="card tilt-card">
 
-                    <div class="card-number">01</div>
+                    <div class="card-number">
+
+                        01
+
+                    </div>
+
 
                     <div class="card-icon">
+
                         🔒
+
                     </div>
+
 
                     <div class="card-line"></div>
 
-                    <h3>Privacidade</h3>
+
+                    <h3>
+
+                        Privacidade
+
+                    </h3>
+
 
                     <p>
-                        Empresas podem coletar grandes quantidades de dados
-                        sem que o usuário compreenda completamente como eles
-                        serão utilizados.
+
+                        Empresas podem coletar grandes quantidades
+
+                        de dados sem que o usuário compreenda
+
+                        completamente como eles serão utilizados.
+
                     </p>
 
-                    <button class="solution-btn" data-target="privacidade">
+
+                    <button
+                        class="solution-btn"
+                        data-target="privacidade"
+                    >
+
                         <span>Ver solução</span>
+
                         <b>↗</b>
+
                     </button>
 
                 </article>
 
 
+                <!-- CARD 02 -->
+
                 <article class="card tilt-card">
 
-                    <div class="card-number">02</div>
+                    <div class="card-number">
+
+                        02
+
+                    </div>
+
 
                     <div class="card-icon">
+
                         📚
+
                     </div>
+
 
                     <div class="card-line"></div>
 
-                    <h3>Textos complexos</h3>
+
+                    <h3>
+
+                        Textos complexos
+
+                    </h3>
+
 
                     <p>
-                        Linguagem jurídica e documentos enormes tornam difícil
-                        compreender aquilo que realmente está sendo aceito.
+
+                        Linguagem jurídica e documentos enormes
+
+                        tornam difícil compreender aquilo que
+
+                        realmente está sendo aceito.
+
                     </p>
 
-                    <button class="solution-btn" data-target="complexidade">
+
+                    <button
+                        class="solution-btn"
+                        data-target="complexidade"
+                    >
+
                         <span>Ver solução</span>
+
                         <b>↗</b>
+
                     </button>
 
                 </article>
 
 
+                <!-- CARD 03 -->
+
                 <article class="card tilt-card">
 
-                    <div class="card-number">03</div>
+                    <div class="card-number">
+
+                        03
+
+                    </div>
+
 
                     <div class="card-icon">
+
                         ⚡
+
                     </div>
+
 
                     <div class="card-line"></div>
 
-                    <h3>Aceitação automática</h3>
+
+                    <h3>
+
+                        Aceitação automática
+
+                    </h3>
+
 
                     <p>
-                        Muitos usuários clicam em "Aceitar" rapidamente sem
-                        conhecer regras, direitos e responsabilidades.
+
+                        Muitos usuários clicam em "Aceitar"
+
+                        rapidamente sem conhecer regras,
+
+                        direitos e responsabilidades.
+
                     </p>
 
-                    <button class="solution-btn" data-target="aceitacao">
+
+                    <button
+                        class="solution-btn"
+                        data-target="aceitacao"
+                    >
+
                         <span>Ver solução</span>
+
                         <b>↗</b>
+
                     </button>
 
                 </article>
 
 
+                <!-- CARD 04 -->
+
                 <article class="card tilt-card">
 
-                    <div class="card-number">04</div>
+                    <div class="card-number">
+
+                        04
+
+                    </div>
+
 
                     <div class="card-icon">
+
                         🎯
+
                     </div>
+
 
                     <div class="card-line"></div>
 
-                    <h3>Consentimento</h3>
+
+                    <h3>
+
+                        Consentimento
+
+                    </h3>
+
 
                     <p>
-                        Algumas interfaces dificultam a recusa e deixam
-                        alternativas de privacidade menos visíveis.
+
+                        Algumas interfaces dificultam a recusa
+
+                        e deixam alternativas de privacidade
+
+                        menos visíveis.
+
                     </p>
 
-                    <button class="solution-btn" data-target="consentimento">
+
+                    <button
+                        class="solution-btn"
+                        data-target="consentimento"
+                    >
+
                         <span>Ver solução</span>
+
                         <b>↗</b>
+
                     </button>
 
                 </article>
@@ -346,49 +530,82 @@
 
 
         <!-- SOLUÇÕES -->
+
         <section id="solucoes" class="solutions-section">
 
             <div class="section-title">
 
-                <div class="section-number">02 / 04</div>
+                <div class="section-number">
 
-                <span class="tag">PROPOSTAS</span>
+                    02 / 04
+
+                </div>
+
+
+                <span class="tag">
+
+                    PROPOSTAS
+
+                </span>
+
 
                 <h2>
+
                     Tecnologia que
+
                     <span>explica.</span>
+
                 </h2>
 
+
                 <p>
-                    Uma experiência digital mais transparente começa quando
-                    informação complexa se transforma em informação compreensível.
+
+                    Uma experiência digital mais transparente
+
+                    começa quando informação complexa se
+
+                    transforma em informação compreensível.
+
                 </p>
 
             </div>
 
 
-            <div class="solution-display" id="solution-display">
+            <div
+                class="solution-display"
+                id="solution-display"
+            >
 
                 <div class="solution-placeholder">
 
                     <div class="hologram-icon">
+
                         💡
+
                     </div>
+
 
                     <div class="mini-label">
+
                         SYSTEM_WAITING
+
                     </div>
 
-                    <h3>Escolha um dilema</h3>
+
+                    <h3>
+
+                        Escolha um dilema
+
+                    </h3>
+
 
                     <p>
-                        Selecione uma das áreas acima para carregar
-                        uma solução digital.
-                    </p>
 
-                    <div class="loading-bar">
-                        <span></span>
-                    </div>
+                        Selecione uma das áreas acima para
+
+                        carregar uma solução digital.
+
+                    </p>
 
                 </div>
 
@@ -398,24 +615,47 @@
 
 
         <!-- PRINCÍPIOS -->
-        <section class="principles">
 
-            <div class="principles-intro">
+        <section
+            id="principios"
+            class="principles"
+        >
 
-                <div class="section-number">03 / 04</div>
+            <div class="principles-content">
 
-                <span class="tag">NOSSA PROPOSTA</span>
+                <div class="section-number">
+
+                    03 / 04
+
+                </div>
+
+
+                <span class="tag">
+
+                    NOSSA PROPOSTA
+
+                </span>
+
 
                 <h2>
-                    O futuro digital
-                    precisa ser
-                    <span>compreensível.</span>
+
+                    Termos de uso
+
+                    devem ser
+
+                    <span>compreensíveis.</span>
+
                 </h2>
 
+
                 <p>
-                    Não basta criar tecnologias avançadas.
-                    Precisamos criar experiências onde as pessoas
-                    saibam exatamente quais escolhas estão fazendo.
+
+                    O usuário não deveria precisar ser especialista
+
+                    em tecnologia ou direito para entender aquilo
+
+                    que está aceitando.
+
                 </p>
 
             </div>
@@ -423,28 +663,64 @@
 
             <div class="principles-list">
 
-                <div class="principle">
+
+                <div class="principle tilt-card">
+
                     <strong>01</strong>
-                    <span>CORE</span>
-                    <p>Linguagem simples</p>
+
+                    <span>LANGUAGE</span>
+
+                    <p>
+
+                        Linguagem simples
+
+                    </p>
+
                 </div>
 
-                <div class="principle">
+
+                <div class="principle tilt-card">
+
                     <strong>02</strong>
-                    <span>DATA</span>
-                    <p>Transparência sobre dados</p>
+
+                    <span>PRIVACY</span>
+
+                    <p>
+
+                        Transparência sobre dados
+
+                    </p>
+
                 </div>
 
-                <div class="principle">
+
+                <div class="principle tilt-card">
+
                     <strong>03</strong>
-                    <span>USER</span>
-                    <p>Escolhas realmente livres</p>
+
+                    <span>CHOICE</span>
+
+                    <p>
+
+                        Escolhas realmente livres
+
+                    </p>
+
                 </div>
 
-                <div class="principle">
+
+                <div class="principle tilt-card">
+
                     <strong>04</strong>
+
                     <span>ACCESS</span>
-                    <p>Resumo antes da aceitação</p>
+
+                    <p>
+
+                        Resumo antes da aceitação
+
+                    </p>
+
                 </div>
 
             </div>
@@ -453,42 +729,75 @@
 
 
         <!-- QUIZ -->
+
         <section id="quiz" class="quiz">
 
             <div class="quiz-background"></div>
 
-            <div class="section-number">04 / 04</div>
 
-            <span class="tag">TESTE SEUS CONHECIMENTOS</span>
+            <div class="section-number">
+
+                04 / 04
+
+            </div>
+
+
+            <span class="tag">
+
+                TESTE SEUS CONHECIMENTOS
+
+            </span>
+
 
             <h2>
+
                 Você estaria
+
                 <span>preparado?</span>
+
             </h2>
 
+
             <p>
+
                 Antes de aceitar um termo de uso,
+
                 qual atitude é mais segura?
+
             </p>
+
 
             <div class="quiz-options">
 
+
                 <button data-answer="wrong">
+
                     <span>A</span>
+
                     Clicar em "Aceitar" rapidamente
+
                 </button>
+
 
                 <button data-answer="correct">
+
                     <span>B</span>
+
                     Verificar como meus dados serão utilizados
+
                 </button>
 
+
                 <button data-answer="wrong">
+
                     <span>C</span>
+
                     Ignorar todas as configurações de privacidade
+
                 </button>
 
             </div>
+
 
             <div id="quiz-result"></div>
 
@@ -498,37 +807,58 @@
 
 
     <!-- FOOTER -->
+
     <footer>
 
         <div>
 
             <a href="#inicio" class="logo">
-                <span class="logo-symbol">◈</span>
+
+                <span class="logo-symbol">
+
+                    ◈
+
+                </span>
+
                 Dilemas<span>Digitais</span>
+
             </a>
 
+
             <p>
+
                 Educação e cidadania para uma internet
+
                 mais transparente.
+
             </p>
 
         </div>
 
+
         <div class="footer-system">
 
             <span class="status">
+
                 <i></i>
+
                 SYSTEM ONLINE
+
             </span>
 
+
             <p>
+
                 Projeto educacional • 2026
+
             </p>
 
         </div>
 
     </footer>
 
+
+    <!-- JAVASCRIPT -->
 
     <script src="script.js"></script>
 
