@@ -7,14 +7,11 @@ const numeroPergunta = document.querySelector("#numero-pergunta");
 const porcentagem = document.querySelector("#porcentagem");
 const barraPreenchida = document.querySelector(".barra-preenchida");
 
-
 const perguntas = [
-
     {
         enunciado: "Qual medida você considera mais importante para melhorar a saúde pública da sua comunidade?",
 
         alternativas: [
-
             {
                 texto: "Investir em campanhas de vacinação, prevenção de doenças e educação em saúde. Acredito que prevenir problemas de saúde é melhor do que esperar as pessoas adoecerem para procurar atendimento.",
 
@@ -32,16 +29,13 @@ const perguntas = [
                     "Essa pessoa valoriza a facilidade para conseguir consultas, exames e orientações quando precisa de cuidados de saúde."
                 ]
             }
-
         ]
     },
 
-
     {
-        enunciado: "Qual deveria ser a principal prioridade do governo para melhorar a saúde pública?",
+        enunciado: "Qual deveria ser a principal prioridade para melhorar a saúde pública?",
 
         alternativas: [
-
             {
                 texto: "Investir mais em campanhas de prevenção e educação em saúde nas escolas, para que os jovens aprendam desde cedo sobre alimentação saudável, vacinação e prevenção de doenças.",
 
@@ -59,16 +53,13 @@ const perguntas = [
                     "A pessoa idosa possui experiências e conhecimentos adquiridos ao longo da vida, contribuindo para a família e para a comunidade."
                 ]
             }
-
         ]
     },
-
 
     {
         enunciado: "Na sua opinião, qual é o maior problema da saúde pública atualmente?",
 
         alternativas: [
-
             {
                 texto: "Para mim, o principal problema é a demora para conseguir consultas e exames. Como mãe, preciso de um atendimento rápido quando meus filhos ficam doentes.",
 
@@ -86,163 +77,84 @@ const perguntas = [
                     "O profissional da saúde atua com responsabilidade e atenção, contribuindo para o bem-estar e a qualidade de vida da população."
                 ]
             }
-
         ]
     }
-
 ];
 
-
 let atual = 0;
-
 let historiaFinal = "";
-
-
-/* Mostra a pergunta atual */
 
 function mostraPergunta() {
 
     if (atual >= perguntas.length) {
-
         mostraResultado();
-
         return;
     }
 
-
     const perguntaAtual = perguntas[atual];
 
-
-    caixaPerguntas.textContent =
-        perguntaAtual.enunciado;
-
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
 
     caixaAlternativas.innerHTML = "";
 
-
     atualizaProgresso();
-
-
-    mostraAlternativas();
-}
-
-
-/* Cria os botões das alternativas */
-
-function mostraAlternativas() {
-
-    const perguntaAtual = perguntas[atual];
-
 
     perguntaAtual.alternativas.forEach((alternativa) => {
 
-        const botaoAlternativa =
-            document.createElement("button");
+        const botao = document.createElement("button");
 
+        botao.textContent = alternativa.texto;
 
-        botaoAlternativa.textContent =
-            alternativa.texto;
+        botao.addEventListener("click", function () {
+            respostaSelecionada(alternativa);
+        });
 
-
-        botaoAlternativa.addEventListener(
-            "click",
-            () => respostaSelecionada(alternativa)
-        );
-
-
-        caixaAlternativas.appendChild(
-            botaoAlternativa
-        );
-
+        caixaAlternativas.appendChild(botao);
     });
-
 }
-
-
-/* Quando o usuário escolhe uma resposta */
 
 function respostaSelecionada(opcaoSelecionada) {
 
-    const afirmacoes =
-        opcaoSelecionada.afirmacao;
-
-
     historiaFinal += `
-        <p>${afirmacoes[0]}</p>
-        <p>${afirmacoes[1]}</p>
+        <p>${opcaoSelecionada.afirmacao[0]}</p>
+        <p>${opcaoSelecionada.afirmacao[1]}</p>
     `;
 
-
     atual++;
-
 
     mostraPergunta();
 }
 
-
-/* Atualiza a barra de progresso */
-
 function atualizaProgresso() {
 
-    const total =
-        perguntas.length;
+    const total = perguntas.length;
 
+    const numeroAtual = atual + 1;
 
-    const numeroAtual =
-        atual + 1;
-
-
-    const progresso =
-        (atual / total) * 100;
-
+    const progresso = (atual / total) * 100;
 
     numeroPergunta.textContent =
         `Pergunta ${numeroAtual} de ${total}`;
 
-
     porcentagem.textContent =
         `${Math.round(progresso)}%`;
-
 
     barraPreenchida.style.width =
         `${progresso}%`;
 }
 
-
-/* Mostra o resultado */
-
 function mostraResultado() {
 
-    caixaPerguntas.style.display =
-        "none";
+    caixaPerguntas.style.display = "none";
 
+    caixaAlternativas.style.display = "none";
 
-    caixaAlternativas.style.display =
-        "none";
+    document.querySelector(".progresso").style.display = "none";
 
+    caixaResultado.style.display = "block";
 
-    document.querySelector(".progresso").style.display =
-        "none";
-
-
-    caixaResultado.style.display =
-        "block";
-
-
-    textoResultado.innerHTML =
-        historiaFinal;
-
-
-    porcentagem.textContent =
-        "100%";
-
-
-    barraPreenchida.style.width =
-        "100%";
+    textoResultado.innerHTML = historiaFinal;
 }
-
-
-/* Reinicia o quiz */
 
 function reiniciarQuiz() {
 
@@ -250,27 +162,15 @@ function reiniciarQuiz() {
 
     historiaFinal = "";
 
+    caixaResultado.style.display = "none";
 
-    caixaResultado.style.display =
-        "none";
+    caixaPerguntas.style.display = "block";
 
+    caixaAlternativas.style.display = "grid";
 
-    caixaPerguntas.style.display =
-        "block";
-
-
-    caixaAlternativas.style.display =
-        "grid";
-
-
-    document.querySelector(".progresso").style.display =
-        "block";
-
+    document.querySelector(".progresso").style.display = "block";
 
     mostraPergunta();
 }
-
-
-/* Inicia o quiz */
 
 mostraPergunta();
