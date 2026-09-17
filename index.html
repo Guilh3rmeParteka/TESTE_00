@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Você decide o futuro da IA</title>
+</head>
+
+<body>
+
+    <main class="caixa-principal">
+
+        <div class="cabecalho">
+            <span class="icone">✦</span>
+            <span>QUIZ • SAÚDE & TECNOLOGIA</span>
+        </div>
+
+        <h1>
+            Você decide o<br>
+            <span>futuro da IA</span>
+        </h1>
+
+        <p class="subtitulo">
+            Responda às perguntas e descubra qual perspectiva
+            sobre tecnologia e saúde pública mais combina com você.
+        </p>
+
+        <div class="progresso">
+
+            <div class="progresso-info">
+                <span id="numero-pergunta">Pergunta 1</span>
+                <span id="porcentagem">0%</span>
+            </div>
+
+            <div class="barra">
+                <div class="barra-preenchida"></div>
+            </div>
+
+        </div>
+
+        <section class="area-quiz">
+
+            <div class="caixa-perguntas"></div>
+
+            <div class="caixa-alternativas"></div>
+
+        </section>
+
+        <section class="caixa-resultado">
+
+            <div class="resultado-icone">✦</div>
+
+            <h2>
+                Olha só o que podemos afirmar sobre você...
+            </h2>
+
+            <p class="texto-resultado"></p>
+
+            <button
+                class="botao-reiniciar"
+                onclick="reiniciarQuiz()"
+            >
+                Fazer o quiz novamente ↻
+            </button>
+
+        </section>
+
+        <footer>
+            IA • Saúde Pública • Futuro
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
